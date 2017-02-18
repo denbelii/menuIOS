@@ -78,7 +78,7 @@ class Menu{
                         
                         self.blackMaskView.alpha = 0.5
                     }, completion: { (completed) in
-                        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ViewController.tapGestureRecognizer))
+                        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapGestureRecognizer))
                         self.blackMaskView.addGestureRecognizer(tapGesture)
                     })
                     
@@ -98,5 +98,10 @@ class Menu{
             print("Error Need Set delegate mainViewController")
         }
     }
+    
+    @objc func tapGestureRecognizer(){
+        toogleMenu()
+    }
+    
     
 }

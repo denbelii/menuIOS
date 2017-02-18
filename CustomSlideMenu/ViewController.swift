@@ -33,8 +33,5 @@ class ViewController: UIViewController, MenuViewControllerDelegate {
         
     }
     
-    func tapGestureRecognizer(){
-        menuObj?.toogleMenu()
-    }
 }
 
