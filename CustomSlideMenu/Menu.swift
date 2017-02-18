@@ -18,12 +18,12 @@ class Menu{
     let view: UIView
     var menuLeftConstraint: NSLayoutConstraint?
     
-    init(isShowingMenu: Bool, nameMainViewController: String, view: UIView, menuLeftConstraint: NSLayoutConstraint) {
+    init(isShowingMenu: Bool, nameMainViewController: String, view: UIView) {
         self.isShowingMenu = isShowingMenu
         //self.blackMaskView = blackMaskView
         self.menuViewController = UIStoryboard(name: nameMainViewController, bundle: nil).instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
         self.view = view
-        self.menuLeftConstraint = menuLeftConstraint
+        // self.menuLeftConstraint = menuLeftConstraint
     }
     
     func startMenu (parentVC: UIViewController){
@@ -42,7 +42,7 @@ class Menu{
     }
     
     func toogleMenu(){
-        if menuViewController.delegate == nil{
+        if menuViewController.delegate != nil{
             if let menuLeftConstraint = menuLeftConstraint{
                 isShowingMenu = !isShowingMenu
                 if  isShowingMenu {
@@ -90,6 +90,7 @@ class Menu{
                         
                     })
                 }
+                //toogleMenu()
             }else{
                 print("Error Need Call Func Start")
             }
