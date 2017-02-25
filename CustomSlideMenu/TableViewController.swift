@@ -16,13 +16,11 @@ class TableViewController: UITableViewController, MenuViewControllerDelegate, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panGo(_:)))
         view.addGestureRecognizer(panGesture)
     }
     
     func panGo(_ panG: UIPanGestureRecognizer){
-        
         let coordinate = panG.location(in: view)
         switch panG.state {
         case .began:
@@ -40,18 +38,14 @@ class TableViewController: UITableViewController, MenuViewControllerDelegate, UI
         default:
             print("DEFAULT")
         }
-        
     }
         
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-        
     }
     
-    // MARK: - Table view data source
-    
-    
+    // MARK: - Table view data source    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -62,20 +56,16 @@ class TableViewController: UITableViewController, MenuViewControllerDelegate, UI
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
-        
         switch indexPath.row {
         case 0:
             cell.textLabel?.text = "News"
-            
         case 1:
             cell.textLabel?.text = "App"
         case 2:
             cell.textLabel?.text = "Author"
-            
         default:
             cell.textLabel?.text = "UPS!"
         }
-        
         return cell
     }
     

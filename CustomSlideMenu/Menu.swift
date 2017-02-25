@@ -44,12 +44,10 @@ class Menu{
                 isShowingMenu = !isShowingMenu
                 if  !isShowingMenu {
                     //HideMenu
-                    UIApplication.shared.isStatusBarHidden = false
                     hideMenu()
                     hideBlackView()
                 }else{
                     //PresentMenu
-                    UIApplication.shared.isStatusBarHidden = true
                     showBlackView()
                     showMenu()
                 }
@@ -63,20 +61,20 @@ class Menu{
     
     func showMenu(){
         if state == .close{
+            UIApplication.shared.isStatusBarHidden = true
             menuViewController.view.isHidden = false
             menuLeftConstraint?.constant = 0
             UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
                 self.view.layoutIfNeeded()
             }, completion: { (completed) in
-                print("menu.view = \(self.menuViewController.view)")
             })
-            
+            isShowingMenu = true
             state = .open
-            print("showmenu")
         }
     }
     
     func hideMenu(){
+        UIApplication.shared.isStatusBarHidden = false
         menuLeftConstraint?.constant = -(menuViewController.view.bounds.size.width)
         UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
             self.view.layoutIfNeeded()
@@ -84,7 +82,7 @@ class Menu{
             self.menuViewController.view.isHidden = true
             self.state = .close
         })
-        print("HIDE MENU")
+        isShowingMenu = false
     }
     
     func showBlackView(){
@@ -132,9 +130,6 @@ class Menu{
             newXCenter = x > 0 ? halfWidth : x
             if x <= 0 && x >= -menuViewController.view.bounds.size.width{
                 menuLeftConstraint?.constant += deltaReal
-                UIView.animate(withDuration: TimeInterval(0.2), animations: {
-                    self.view.layoutIfNeeded()
-                })
             }
             deltaYMenu = tapPoint.x
         }
