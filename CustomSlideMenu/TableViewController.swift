@@ -11,12 +11,12 @@ import UIKit
 class TableViewController: UITableViewController, MenuViewControllerDelegate, UIGestureRecognizerDelegate{
     
     var menuObj: Menu?
+    var xMenuDelta: CGFloat = 0
+    var isRightFirstTap = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeForMenu(_:)))
-        view.addGestureRecognizer(swipeGesture)
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panGo(_:)))
         view.addGestureRecognizer(panGesture)
     }
@@ -26,58 +26,23 @@ class TableViewController: UITableViewController, MenuViewControllerDelegate, UI
         let coordinate = panG.location(in: view)
         switch panG.state {
         case .began:
-            startMenu()
-            print("Begin")
-            menuObj?.dragMenu(tapPoint: coordinate)
-            print("translation.x = \(coordinate.x), translation.y = \(coordinate.y)")
+            xMenuDelta = coordinate.x
         case .changed:
-            print("Changed")
-            menuObj?.dragMenu(tapPoint: coordinate)
-            print("translation.x = \(coordinate.x), translation.y = \(coordinate.y)")
-        case .cancelled:
-            
-            print(":))")
-            print("translation.x = \(coordinate.x), translation.y = \(coordinate.y)")
+            if (coordinate.x - xMenuDelta) > 0 || isRightFirstTap{
+                startMenu()
+                menuObj?.dragMenu(tapPoint: coordinate)
+                isRightFirstTap = true
+            }
+            xMenuDelta = coordinate.x
         case .ended:
-        menuObj?.endPan()
+            menuObj?.endPan()
             
         default:
             print("DEFAULT")
         }
         
     }
-    
-    func swipeForMenu(_ swipe: UISwipeGestureRecognizer){
-        //if swipe.direction == .right{
-        print("Swipe.right")
-        let coordinate = swipe.location(in: view)
         
-        if swipe.state == .began{
-            print("Begin")
-        }
-        
-        if swipe.state == .changed{
-            print("Changed")
-        }
-        
-        switch swipe.state {
-        case .began:
-            print("Begin")
-            print("translation.x = \(coordinate.x), translation.y = \(coordinate.y)")
-        case .changed:
-            print("Changed")
-            print("translation.x = \(coordinate.x), translation.y = \(coordinate.y)")
-        case .cancelled:
-            print("cancelled))")
-            print("translation.x = \(coordinate.x), translation.y = \(coordinate.y)")
-        default:
-            print(":))")
-            print("translation.x = \(coordinate.x), translation.y = \(coordinate.y)")
-        }
-        
-        //}
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
