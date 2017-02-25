@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		770A3D361E59CF3B005CAA2B /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770A3D351E59CF3B005CAA2B /* TableViewController.swift */; };
 		7787EF471E58A5EC00DE8FA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7787EF461E58A5EC00DE8FA5 /* AppDelegate.swift */; };
 		7787EF491E58A5EC00DE8FA5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7787EF481E58A5EC00DE8FA5 /* ViewController.swift */; };
 		7787EF4C1E58A5EC00DE8FA5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7787EF4A1E58A5EC00DE8FA5 /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		770A3D351E59CF3B005CAA2B /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		7787EF431E58A5EC00DE8FA5 /* CustomSlideMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomSlideMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7787EF461E58A5EC00DE8FA5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7787EF481E58A5EC00DE8FA5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 		7787EF451E58A5EC00DE8FA5 /* CustomSlideMenu */ = {
 			isa = PBXGroup;
 			children = (
+				770A3D351E59CF3B005CAA2B /* TableViewController.swift */,
 				7787EF461E58A5EC00DE8FA5 /* AppDelegate.swift */,
 				7787EF771E58A68100DE8FA5 /* MenuViewController.swift */,
 				7787EF481E58A5EC00DE8FA5 /* ViewController.swift */,
@@ -273,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7787EF4F1E58A5EC00DE8FA5 /* CustomSlideMenu.xcdatamodeld in Sources */,
+				770A3D361E59CF3B005CAA2B /* TableViewController.swift in Sources */,
 				7787EF491E58A5EC00DE8FA5 /* ViewController.swift in Sources */,
 				7787EF471E58A5EC00DE8FA5 /* AppDelegate.swift in Sources */,
 				7787EF781E58A68100DE8FA5 /* MenuViewController.swift in Sources */,
@@ -519,6 +523,7 @@
 				7787EF701E58A5ED00DE8FA5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7787EF711E58A5ED00DE8FA5 /* Build configuration list for PBXNativeTarget "CustomSlideMenuTests" */ = {
 			isa = XCConfigurationList;
@@ -527,6 +532,7 @@
 				7787EF731E58A5ED00DE8FA5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7787EF741E58A5ED00DE8FA5 /* Build configuration list for PBXNativeTarget "CustomSlideMenuUITests" */ = {
 			isa = XCConfigurationList;
@@ -535,6 +541,7 @@
 				7787EF761E58A5ED00DE8FA5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

@@ -34,13 +34,13 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         switch indexPath.row {
         case 0:
-            cell.textLabel?.text = "News"
+            cell.textLabel?.text = "News!!!"
         case 1:
-            cell.textLabel?.text = "App"
+            cell.textLabel?.text = "App!!!"
         case 2:
-            cell.textLabel?.text = "Author"
+            cell.textLabel?.text = "Author!!!"
         default:
-            cell.textLabel?.text = "UPS!"
+            cell.textLabel?.text = "UPS!!!"
         }
         
         return cell
