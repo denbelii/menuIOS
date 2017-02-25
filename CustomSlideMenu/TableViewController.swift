@@ -29,7 +29,6 @@ class TableViewController: UITableViewController, MenuViewControllerDelegate, UI
             if (coordinate.x - xMenuDelta) > 0 || isRightFirstTap{
                 startMenu()
                 menuObj?.dragMenu(tapPoint: coordinate)
-                isRightFirstTap = true
             }
             xMenuDelta = coordinate.x
         case .ended:
@@ -74,6 +73,7 @@ class TableViewController: UITableViewController, MenuViewControllerDelegate, UI
             menuObj = Menu(isShowingMenu: false, view: view)
             menuObj?.menuViewController.delegate = self
             menuObj?.startMenu(parentVC: self)
+            isRightFirstTap = true
         }
     }
     
