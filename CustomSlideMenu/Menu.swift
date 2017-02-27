@@ -44,12 +44,10 @@ class Menu{
                 isShowingMenu = !isShowingMenu
                 if  !isShowingMenu {
                     //HideMenu
-                    hideMenu()
-                    hideBlackView()
+                    tapCloseMenu()
                 }else{
                     //PresentMenu
-                    showBlackView()
-                    showMenu()
+                    show()
                 }
             }else{
                 print("Error Need Call Func Start")
@@ -135,18 +133,23 @@ class Menu{
         }
     }
     
-    func endPan(){
+    func endPan(velocity: CGFloat){
         deltaYMenu = 0
-        if menuViewController.view.center.x > 0{
-            showMenu()
-            showBlackView()
-        } else{
-            hideMenu()
-            hideBlackView()
+        if menuViewController.view.center.x > 0 || (velocity > 0 && velocity > 200){
+            show()
+        }
+        if menuViewController.view.center.x <= 0 || (velocity < 0 && abs(velocity) > 200){
+            print("velocity!!! = \(abs(velocity))")
+            tapCloseMenu()
         }
     }
     
-    @objc func tapCloseMenu(){
+    private func show(){
+        showMenu()
+        showBlackView()
+    }
+    
+    @objc private func tapCloseMenu(){
         hideMenu()
         hideBlackView()
     }

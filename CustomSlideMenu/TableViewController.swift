@@ -11,7 +11,6 @@ import UIKit
 class TableViewController: UITableViewController, MenuViewControllerDelegate, UIGestureRecognizerDelegate{
     
     var menuObj: Menu?
-    var xMenuDelta: CGFloat = 0
     var isRightFirstTap = false
     
     override func viewDidLoad() {
@@ -23,17 +22,15 @@ class TableViewController: UITableViewController, MenuViewControllerDelegate, UI
     func panGo(_ panG: UIPanGestureRecognizer){
         let coordinate = panG.location(in: view)
         switch panG.state {
-        case .began:
-            xMenuDelta = coordinate.x
+        case .began: break
         case .changed:
-            if (coordinate.x - xMenuDelta) > 0 || isRightFirstTap{
+            let velocity = panG.velocity(in: view)
+            if velocity.x > 0 || isRightFirstTap{
                 startMenu()
                 menuObj?.dragMenu(tapPoint: coordinate)
             }
-            xMenuDelta = coordinate.x
         case .ended:
-            menuObj?.endPan()
-            
+            menuObj?.endPan(velocity: panG.velocity(in: view).x)
         default:
             print("DEFAULT")
         }
