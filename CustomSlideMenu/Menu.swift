@@ -11,14 +11,14 @@ import UIKit
 
 class Menu{
     
-    var state: StateMenu = .close
-    let nameMainStoryboard = "Main"
-    var isShowingMenu = false
-    var blackMaskView = UIView(frame: .zero)
+    private var state: StateMenu = .close
+    private let nameMainStoryboard = "Main"
+    private var isShowingMenu = false
+    private var blackMaskView = UIView(frame: .zero)
     let menuViewController: MenuViewController
-    let view: UIView
-    var menuLeftConstraint: NSLayoutConstraint?
-    var deltaYMenu: CGFloat?
+    private let view: UIView
+    private var menuLeftConstraint: NSLayoutConstraint?
+    private var deltaYMenu: CGFloat?
     
     init(isShowingMenu: Bool, view: UIView) {
         self.isShowingMenu = isShowingMenu
@@ -59,7 +59,7 @@ class Menu{
         }
     }
     
-    func showMenu(){
+    private func showMenu(){
         if state == .close{
             UIApplication.shared.isStatusBarHidden = true
             menuViewController.view.isHidden = false
@@ -73,7 +73,7 @@ class Menu{
         }
     }
     
-    func hideMenu(){
+    private func hideMenu(){
         UIApplication.shared.isStatusBarHidden = false
         menuLeftConstraint?.constant = -(menuViewController.view.bounds.size.width)
         UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
@@ -85,7 +85,7 @@ class Menu{
         isShowingMenu = false
     }
     
-    func showBlackView(){
+    private func showBlackView(){
         if blackMaskView.alpha == 0 || blackMaskView.frame == .zero{
             blackMaskView = UIView(frame: .zero)
             blackMaskView.alpha = 0
@@ -107,7 +107,7 @@ class Menu{
         }
     }
     
-    func hideBlackView(){
+    private func hideBlackView(){
         UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseInOut, animations: {
             self.view.layoutIfNeeded()
             self.blackMaskView.alpha = 0.0
